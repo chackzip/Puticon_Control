@@ -13,41 +13,47 @@ class AControlCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-	/** Camera boom positioning the camera behind the character */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	class USpringArmComponent* CameraBoom;
+	///** Camera boom positioning the camera behind the character */
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	//class USpringArmComponent* CameraBoom;
 
-	/** Follow camera */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	class UCameraComponent* FollowCamera;
+	///** Follow camera */
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	//class UCameraComponent* FollowCamera;
 	
 	/** MappingContext */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputMappingContext* DefaultMappingContext;
 
-	/** Jump Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* JumpAction;
+	///** Jump Input Action */
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	//class UInputAction* JumpAction;
 
-	/** Move Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* MoveAction;
+	///** Move Input Action */
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	//class UInputAction* MoveAction;
 
-	/** Look Input Action */
+	///** Look Input Action */
+	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	//class UInputAction* LookAction;]
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* LookAction;
+	float YawRotationSpeed;
 
 public:
 	AControlCharacter();
 	
 
-protected:
+public:
 
-	/** Called for movement input */
-	void Move(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void Move(const FVector2D& Value);
 
-	/** Called for looking input */
-	void Look(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void RoboMove(const FVector2D& Value);
+
+	UFUNCTION(BlueprintCallable)
+	void Look(const FVector2D& Value);
 			
 
 protected:
@@ -58,9 +64,9 @@ protected:
 	virtual void BeginPlay();
 
 public:
-	/** Returns CameraBoom subobject **/
-	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-	/** Returns FollowCamera subobject **/
-	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	///** Returns CameraBoom subobject **/
+	//FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+	///** Returns FollowCamera subobject **/
+	//FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 };
 
