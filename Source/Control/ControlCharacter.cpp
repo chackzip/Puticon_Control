@@ -127,7 +127,8 @@ void AControlCharacter::RoboMove(const FVector2D& Value)
 		{
 			AddMovementInput(ForwardDirection, MovementVector.Y);
 		}
-		else
+		
+		if(0 < FMath::Abs(MovementVector.X))
 		{
 			FRotator Rotator = FRotator::MakeFromEuler(FVector(0, 0, MovementVector.X));
 			AddActorLocalRotation(Rotator);
