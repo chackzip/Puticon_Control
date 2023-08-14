@@ -9,7 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-
+#include "Kismet/KismetMathLibrary.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AControlCharacter
@@ -129,8 +129,8 @@ void AControlCharacter::RoboMove(const FVector2D& Value)
 		}
 		else
 		{
-			FKisment
-			AddActorLocalRotation();
+			FRotator Rotator = FRotator::MakeFromEuler(FVector(0, 0, MovementVector.X));
+			AddActorLocalRotation(Rotator);
 		}
 	}
 }
