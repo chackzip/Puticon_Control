@@ -64,6 +64,10 @@ protected:
 	virtual void BeginPlay();
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	FVector2D MoveInputVector;
+
+public:
 	///** Returns CameraBoom subobject **/
 	//FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	///** Returns FollowCamera subobject **/

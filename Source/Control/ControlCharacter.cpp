@@ -91,7 +91,7 @@ void AControlCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerI
 void AControlCharacter::Move(const FVector2D& Value)
 {
 	// input is a Vector2D
-	FVector2D MovementVector = Value;
+	MoveInputVector = Value;
 
 	if (Controller != nullptr)
 	{
@@ -106,15 +106,15 @@ void AControlCharacter::Move(const FVector2D& Value)
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
 		// add movement 
-		AddMovementInput(ForwardDirection, MovementVector.Y);
-		AddMovementInput(RightDirection, MovementVector.X);
+		AddMovementInput(ForwardDirection, MoveInputVector.Y);
+		AddMovementInput(RightDirection, MoveInputVector.X);
 	}
 }
 
 void AControlCharacter::RoboMove(const FVector2D& Value)
 {
 	// input is a Vector2D
-	FVector2D MovementVector = Value;
+	MoveInputVector = Value;
 
 	if (Controller != nullptr)
 	{
@@ -123,14 +123,14 @@ void AControlCharacter::RoboMove(const FVector2D& Value)
 		ForwardDirection.Normalize();
 
 		// add movement 
-		if (0 < FMath::Abs(MovementVector.Y))
+		if (0 < FMath::Abs(MoveInputVector.Y))
 		{
-			AddMovementInput(ForwardDirection, MovementVector.Y);
+			AddMovementInput(ForwardDirection, MoveInputVector.Y);
 		}
 		
-		if(0 < FMath::Abs(MovementVector.X))
+		if(0 < FMath::Abs(MoveInputVector.X))
 		{
-			FRotator Rotator = FRotator::MakeFromEuler(FVector(0, 0, MovementVector.X));
+			FRotator Rotator = FRotator::MakeFromEuler(FVector(0, 0, MoveInputVector.X));
 			AddActorLocalRotation(Rotator);
 		}
 	}
