@@ -50,9 +50,6 @@ public:
 	void Move(const FVector2D& Value);
 
 	UFUNCTION(BlueprintCallable)
-	void RoboMove(const FVector2D& Value);
-
-	UFUNCTION(BlueprintCallable)
 	void Look(const FVector2D& Value);
 			
 
@@ -62,6 +59,8 @@ protected:
 	
 	// To add mapping context
 	virtual void BeginPlay();
+
+	virtual void Move_Implementation(const FVector2D& Value);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
