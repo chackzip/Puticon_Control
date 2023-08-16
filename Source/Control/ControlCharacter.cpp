@@ -90,6 +90,11 @@ void AControlCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerI
 
 void AControlCharacter::Move(const FVector2D& Value)
 {
+	Move_Implementation(Value);
+}
+
+void AControlCharacter::Move_Implementation(const FVector2D& Value)
+{
 	// input is a Vector2D
 	MoveInputVector = Value;
 
@@ -108,31 +113,6 @@ void AControlCharacter::Move(const FVector2D& Value)
 		// add movement 
 		AddMovementInput(ForwardDirection, MoveInputVector.Y);
 		AddMovementInput(RightDirection, MoveInputVector.X);
-	}
-}
-
-void AControlCharacter::RoboMove(const FVector2D& Value)
-{
-	// input is a Vector2D
-	MoveInputVector = Value;
-
-	if (Controller != nullptr)
-	{
-		// get forward vector
-		FVector ForwardDirection = GetActorForwardVector();
-		ForwardDirection.Normalize();
-
-		// add movement 
-		if (0 < FMath::Abs(MoveInputVector.Y))
-		{
-			AddMovementInput(ForwardDirection, MoveInputVector.Y);
-		}
-		
-		if(0 < FMath::Abs(MoveInputVector.X))
-		{
-			FRotator Rotator = FRotator::MakeFromEuler(FVector(0, 0, MoveInputVector.X));
-			AddActorLocalRotation(Rotator);
-		}
 	}
 }
 
