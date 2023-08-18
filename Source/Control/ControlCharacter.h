@@ -51,7 +51,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void Look(const FVector2D& Value);
-			
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void Attack();
 
 protected:
 	// APawn interface
