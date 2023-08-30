@@ -21,5 +21,7 @@ public:
 protected:
 
 	virtual void Move_Implementation(const FVector2D& Value) override;
+
+protected:
 };
 
